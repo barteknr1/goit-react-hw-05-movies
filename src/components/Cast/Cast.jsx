@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 const Cast = props => {
   return (
@@ -7,6 +7,6 @@ const Cast = props => {
   )
 }
 
-Cast.propTypes = {}
+// Cast.propTypes = {}
 
 export default Cast
