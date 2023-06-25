@@ -22,9 +22,9 @@ const MovieDetails = () => {
 
   return (
     <main>
-      {selectedMovie.map(({ poster_path, title, release_date, vote_average, overview, genres, id }) =>
+      {selectedMovie.map(({ poster_path, title, release_date, vote_average, overview, genres, id, tagline }) =>
         <div key={id}>
-          <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} width="200"></img>
+          <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`${tagline}`} width="200"></img>
           <div>
             <h2>{title} ({release_date.slice(0, 4)})</h2>
             <p>User Score: {Math.round(vote_average * 10)}%</p>
@@ -32,7 +32,7 @@ const MovieDetails = () => {
             <p>{overview}</p>
             <h4>Genres</h4>
             <ul>{genres
-              .map(({id, name}) =>
+              .map(({ id, name }) =>
                 <li key={id}>{name}</li>)}
             </ul>
           </div>
@@ -52,6 +52,6 @@ const MovieDetails = () => {
       <Outlet />
     </main>
   )
-}
+};
 
 export default MovieDetails

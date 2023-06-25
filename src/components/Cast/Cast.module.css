@@ -1,0 +1,29 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.castItem {
+  width: 200px;
+  margin: 20px;
+  outline: 2px dotted black;
+  outline-offset: 12px;
+  border-radius: 1px;
+}
+.noPhoto {
+  width: 200px;
+  height: 300px;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  background-color: rgb(81, 81, 81);
+  border-radius: 10px;
+  color: white;
+  padding: 15px;
+}
+.castDescription {
+  font-weight: 500;
+}
+.castImg {
+  border-radius: 10px;
+}
