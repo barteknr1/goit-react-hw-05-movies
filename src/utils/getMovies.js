@@ -18,5 +18,21 @@ const getTrendingMovies = async () => {
     }
 }
 
-const api = { getTrendingMovies } 
+const getMovieById = async (id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/${id}`, {
+            params: {
+                api_key: API_KEY,
+            }
+        })
+        console.log(response.data);
+        return await response.data
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+getMovieById(569094);
+
+const api = { getTrendingMovies, getMovieById };
 export default api

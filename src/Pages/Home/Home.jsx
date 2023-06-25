@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import api from 'utils/getMovies'
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+
 
   useEffect(() => {
     (async () => {
@@ -18,11 +19,10 @@ const Home = () => {
     })();
   }, [])
 
-
   return (
     <ul>
       {movies.map(({id, title}) => 
-        <li key={id}><a>{title}</a></li>
+        <li key={id}><Link to="/movies:movieId">{title}</Link></li>
       )}
     </ul>
   )
