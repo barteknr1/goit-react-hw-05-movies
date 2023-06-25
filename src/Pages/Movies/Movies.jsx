@@ -3,7 +3,7 @@ import css from './Movies.module.css'
 
 const Movies = props => {
   return (
-    <div className={css.movies}>
+    <main className={css.movies}>
       <form className={css.searchForm}>
         <input type="text" className={css.searchFormInput} />
         <button type="submit" className={css.searchFormButton} />
@@ -13,7 +13,7 @@ const Movies = props => {
           {/* movies.map */}
         </ul>
       </div>
-    </div>
+    </main>
   )
 };
 

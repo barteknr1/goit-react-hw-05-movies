@@ -25,14 +25,26 @@ const getMovieById = async (id) => {
                 api_key: API_KEY,
             }
         })
-        console.log(response.data);
         return await response.data
     }
     catch (err) {
         console.log(err);
     }
 }
-getMovieById(569094);
 
-const api = { getTrendingMovies, getMovieById };
+const getMovieCast = async (id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/${id}/credits`, {
+            params: {
+                api_key: API_KEY,
+            }
+        })
+        return await response.data.cast
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+const api = { getTrendingMovies, getMovieById, getMovieCast };
 export default api

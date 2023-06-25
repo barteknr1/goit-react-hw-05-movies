@@ -5,12 +5,10 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   const [movies, setMovies] = useState([]);
 
-
   useEffect(() => {
     (async () => {
       try {
         const trendingMovies = await api.getTrendingMovies();
-        console.log(trendingMovies);
         setMovies(trendingMovies);
       }
       catch (err) {
@@ -20,12 +18,17 @@ const Home = () => {
   }, [])
 
   return (
-    <ul>
-      {movies.map(({id, title}) => 
-        <li key={id}><Link to="/movies:movieId">{title}</Link></li>
-      )}
-    </ul>
+    <main>
+      <ul className="movieList">
+        {movies.map(({ id, title }) =>
+          <li
+            className="movieListItem">
+            <Link to={`/movies/${id}`}>{title}</Link>
+          </li>
+        )}
+      </ul>
+    </main>
   )
-};
+}
 
 export default Home
