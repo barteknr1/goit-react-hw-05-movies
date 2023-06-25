@@ -10,22 +10,20 @@ const Cast = () => {
   useEffect(() => {
     (async () => {
       try {
-        const cast = await api.getMovieCast(movieId);
-        console.log(cast);
-        setCast([cast]);
+        const getCast = await api.getMovieCast(movieId);
+        setCast(getCast.cast);
       }
       catch (err) {
         console.log(err)
       }
     })();
   }, [movieId])
-
   return (
-    <div key={movieId}>
+    <div>
       <ul>
-        {cast.map(({ name, character, profile_path, id }) =>
+        {cast.map(( {name, character, profile_path, id} ) =>
           <li key={id}>{name}</li>
-        )}
+       )}
       </ul>
     </div>
   )

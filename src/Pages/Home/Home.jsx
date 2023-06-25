@@ -22,6 +22,7 @@ const Home = () => {
       <ul className="movieList">
         {movies.map(({ id, title }) =>
           <li
+            key={id}
             className="movieListItem">
             <Link to={`/movies/${id}`}>{title}</Link>
           </li>
