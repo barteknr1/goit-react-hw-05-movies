@@ -23,12 +23,16 @@ const Reviews = () => {
   return (
     <div>
       <ul className={css.reviewList}>
-        {reviews.map(({ author, id, content }) =>
-          <li key={id} className={css.reviewItem}>
-            <p className={css.reviewAuthor}>Author: {author}</p>
-            <p>{content}</p>
-          </li>
-        )}
+        {reviews.length > 0 ? (
+          reviews.map(({ author, id, content }) => {
+            (
+              <li key={id} className={css.reviewItem}>
+                <p className={css.reviewAuthor}>Author: {author}</p>
+                <p>{content}</p>
+              </li>
+            )
+          }
+          )) : (<p>No reviews</p>)}
       </ul>
     </div>
   )

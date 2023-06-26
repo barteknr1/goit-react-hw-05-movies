@@ -18,3 +18,13 @@ ol,
 ul {
   list-style-type: none;
 }
+header {
+  padding: 0 40px;
+  box-shadow: 0 3px 5px gray;
+}
+nav {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
