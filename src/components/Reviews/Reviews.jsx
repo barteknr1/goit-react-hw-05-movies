@@ -12,7 +12,6 @@ const Reviews = () => {
     (async () => {
       try {
         const reviews = await api.getMovieReviews(movieId);
-        console.log(reviews);
         setReviews(reviews);
       }
       catch (err) {
@@ -22,20 +21,20 @@ const Reviews = () => {
   }, [movieId])
   return (
     <div>
-      <ul className={css.reviewList}>
-        {reviews.length > 0 ? (
-          reviews.map(({ author, id, content }) => {
-            (
-              <li key={id} className={css.reviewItem}>
-                <p className={css.reviewAuthor}>Author: {author}</p>
-                <p>{content}</p>
-              </li>
-            )
-          }
-          )) : (<p>No reviews</p>)}
-      </ul>
+      {reviews.length > 0 ? (
+        <ul className={css.reviewList}>
+          {reviews.map(({ author, id, content }) => (
+            <li key={id} className={css.reviewItem}>
+              <p className={css.reviewAuthor}>Author: {author}</p>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="nothingFound">No reviews</p>
+      )}
     </div>
   )
-};
+}
 
 export default Reviews

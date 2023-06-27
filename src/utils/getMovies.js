@@ -47,7 +47,7 @@ const getMovieCast = async (id) => {
 
 const getMovieReviews = async (id) => {
     try {
-        const response = await axios.get(`${BASE_URL}/movie/${id}/reviews?language=en-US&page=1`, {
+        const response = await axios.get(`${BASE_URL}/movie/${id}/reviews?page=1`, {
             params: {
                 api_key: API_KEY,
             }
@@ -59,5 +59,20 @@ const getMovieReviews = async (id) => {
     }
 };
 
-const api = { getTrendingMovies, getMovieById, getMovieCast, getMovieReviews };
+const getMoviesByQuery = async (query) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/search/movie?&page=1`, {
+            params: {
+                query: query,
+                api_key: API_KEY,
+            }
+        })
+        return await response.data.results
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+const api = { getTrendingMovies, getMovieById, getMovieCast, getMovieReviews, getMoviesByQuery };
 export default api

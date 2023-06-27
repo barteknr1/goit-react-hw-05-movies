@@ -1,0 +1,8 @@
+.trendingHeader {
+  margin-left: 25px;
+}
+.trendingList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

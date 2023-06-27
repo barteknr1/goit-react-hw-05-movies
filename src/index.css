@@ -28,3 +28,6 @@ nav {
   align-items: center;
   gap: 10px;
 }
+.nothingFound {
+  font-size: 28px;
+}

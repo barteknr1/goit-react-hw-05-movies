@@ -12,7 +12,6 @@ const MovieDetails = () => {
     (async () => {
       try {
         const movie = await api.getMovieById(movieId);
-        // console.log(movie);
         setSelectedMovie([movie]);
       }
       catch (err) {

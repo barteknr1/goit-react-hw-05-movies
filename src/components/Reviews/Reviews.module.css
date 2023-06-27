@@ -11,7 +11,7 @@
   outline: 1px dashed black;
   outline-offset: 5px;
   border-radius: 1px;
-  padding: 0 20px;
+  padding: 1px 20px;
   width: 90%;
 }
 .reviewAuthor {
