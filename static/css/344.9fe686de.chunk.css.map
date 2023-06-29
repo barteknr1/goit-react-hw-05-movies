@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/344.9fe686de.chunk.css","mappings":"AAAA,4BACE,gBACF,CACA,0BACE,YAAa,CACb,qBAAsB,CACtB,OACF","sources":["Pages/Home/Home.module.css"],"sourcesContent":[".trendingHeader {\n  margin-left: 25px;\n}\n.trendingList {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n"],"names":[],"sourceRoot":""}
