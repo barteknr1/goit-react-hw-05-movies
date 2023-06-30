@@ -21,7 +21,7 @@ const Reviews = () => {
   }, [movieId])
   return (
     <div>
-      {reviews ? (
+      {reviews.length > 0 ? (
         <ul className={css.reviewList}>
           {reviews.map(({ author, id, content }) => (
             <li key={id} className={css.reviewItem}>
