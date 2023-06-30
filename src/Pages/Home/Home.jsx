@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import api from 'utils/getMovies'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import css from './Home.module.css'
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     (async () => {
@@ -25,7 +26,7 @@ const Home = () => {
         {movies.map(({ id, title }) =>
           <li
             key={id}>
-            <Link to={`/movies/${id}`}>{title}</Link>
+            <Link to={`/movies/${id}`} state={{from: location}}>{title}</Link>
           </li>
         )}
       </ul>

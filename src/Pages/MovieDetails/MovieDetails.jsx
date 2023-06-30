@@ -30,11 +30,15 @@ const MovieDetails = () => {
         </Link>
         {selectedMovie.map(({ poster_path, title, release_date, vote_average, overview, genres, id, tagline }) =>
           <div key={id} className={css.movieCard}>
-            <img
+            {poster_path ? (<img
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
               alt={`${tagline}`}
               className={css.movieImg}
             />
+            ) : (
+              <div className={css.noPhoto}>{`No photo :(`}</div>
+            )}
+            
             <div>
               <h2>{title} ({release_date.slice(0, 4)})</h2>
               <p>User Score: {Math.round(vote_average * 10)}%</p>

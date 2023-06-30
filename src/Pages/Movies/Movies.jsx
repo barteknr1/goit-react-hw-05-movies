@@ -1,29 +1,27 @@
 import React from 'react';
 import css from './Movies.module.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import api from 'utils/getMovies';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState([])
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setQuery(e.target.value);
-  }
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
+  const location = useLocation();
   
+  useEffect(() => {
+    if (query === "") return;
+    (async () => {
+      const moviesByQuery = await api.getMoviesByQuery(query);
+      setMovies(moviesByQuery);
+    })()
+  }, [query])
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    (async () => {
-      try {
-        const moviesByQuery = await api.getMoviesByQuery(query);
-        setMovies(moviesByQuery);
-      }
-      catch (err) {
-        console.log(err)
-      }
-    })();
+    const form = e.currentTarget;
+    setSearchParams({ query: form.elements.query.value })
   }
 
   return (
@@ -34,8 +32,7 @@ const Movies = () => {
       >
         <input
           type="text"
-          onChange={handleChange}
-          value={query}
+          name="query"
           className={css.searchFormInput}
           autoFocus
           autoComplete="off"
@@ -53,7 +50,7 @@ const Movies = () => {
             {movies.map(({ id, title }) =>
               <li
                 key={id}>
-                <Link to={`/movies/${id}`}>{title}</Link>
+                <Link to={`/movies/${id}`} state={{from: location}}>{title}</Link>
               </li>
             )}
           </ul>
