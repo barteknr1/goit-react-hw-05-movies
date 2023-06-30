@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import api from 'utils/getMovies';
 import css from './MovieDetails.module.css'
 
@@ -8,7 +8,7 @@ const MovieDetails = () => {
   const [selectedMovie, setSelectedMovie] = useState([])
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+  const backLinkHref = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     (async () => {
@@ -25,7 +25,7 @@ const MovieDetails = () => {
   return (
     <main>
       <div className={css.movieWrapper}>
-        <Link to={backLinkHref}>
+        <Link to={backLinkHref.current}>
           <button className={css.button}>Go back</button>
         </Link>
         {selectedMovie.map(({ poster_path, title, release_date, vote_average, overview, genres, id, tagline }) =>
